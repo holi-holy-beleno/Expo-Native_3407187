@@ -8,28 +8,28 @@ export default function ExperienciaScreen() {
       <View style={estilos.encabezado}>
         <Text style={estilos.tituloSeccion}>Experiencia y Proyectos</Text>
         <Text style={estilos.descripcionSeccion}>
-          Trayectoria en desarrollo de software, proyectos formativos y colaboraciones.
+          Trayectoria en desarrollo de software, proyectos formativos y colaboraciones del año en curso.
         </Text>
       </View>
 
       <TarjetaExperiencia
         puesto="Desarrollador Full-Stack (Proyecto Formativo)"
         empresa="Sistema Web y Móvil IERD Duitama"
-        periodo="2024 - Presente"
+        periodo="2026 - Presente"
         descripcion="Diseño e implementación de arquitectura full-stack, modelado de base de datos relacional y desarrollo del sistema de gestión deportiva y académica."
       />
 
       <TarjetaExperiencia
         puesto="Desarrollador Frontend React / Expo"
         empresa="Proyectos Académicos SENA"
-        periodo="2024"
+        periodo="2026"
         descripcion="Construcción de interfaces de usuario móviles con React Native, consumo de APIs RESTful y gestión de componentes reutilizables con TypeScript."
       />
 
       <TarjetaExperiencia
         puesto="Aprendiz en Desarrollo de Software"
         empresa="Centro de Gestión de Mercados, Logística y TIC - SENA"
-        periodo="2024"
+        periodo="2026"
         descripcion="Aplicación de metodologías ágiles (Scrum), elaboración de diagramación UML, control de versiones con Git/GitHub y desarrollo de módulos backend con Node.js / Python."
       />
     </ScrollView>

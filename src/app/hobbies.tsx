@@ -4,7 +4,7 @@ import TarjetaHobby from "../components/TarjetaHobby";
 
 export default function HobbiesScreen() {
   const mostrarDetalleHobby = (nombre: string, detalle: string) => {
-    Alert.alert(`Detalles de ${nombre}`, detalle, [{ text: "Entendido", style: "default" }]);
+    Alert.alert(`Pasatiempo: ${nombre}`, detalle, [{ text: "¡Entendido!", style: "default" }]);
   };
 
   return (
@@ -17,49 +17,50 @@ export default function HobbiesScreen() {
       </View>
 
       <TarjetaHobby
-        titulo="Desarrollo de Software"
-        categoria="Tecnología & Aprendizaje"
+        titulo="Desarrollo de Software y Código"
+        categoria="Tecnología & Programación"
         nombreIcono="code-slash-outline"
         onPress={() =>
           mostrarDetalleHobby(
             "Desarrollo de Software",
-            "Me apasiona explorar nuevas tecnologías, librerías del ecosistema de JavaScript/TypeScript y construir proyectos móviles y web funcionales."
+            "Me apasiona crear aplicaciones móviles con React Native, experimentar con arquitecturas full-stack y escribir código limpio y eficiente."
           )
         }
       />
 
+      {/* Tarjeta de Videojuegos Actualizada */}
       <TarjetaHobby
         titulo="Videojuegos"
-        categoria="Entretenimiento"
+        categoria="Entretenimiento & Retos"
         nombreIcono="game-controller-outline"
         onPress={() =>
           mostrarDetalleHobby(
             "Videojuegos",
-            "Disfruto juegos de estrategia y rol de plataformas como Hoyoverse y títulos multijugador para despejar la mente."
+            "🎮 Disfruto al máximo de los videojuegos roguelike, de estrategia o de ritmo como The Binding of Isaac, Tower Defense Simulator y osu!mania. ¡Desafíos constantes de reflejos y táctica!"
           )
         }
       />
 
       <TarjetaHobby
-        titulo="Ilustración Digital y Diseño"
+        titulo="Ilustración y Creación de Personajes"
         categoria="Arte & Creatividad"
         nombreIcono="brush-outline"
         onPress={() =>
           mostrarDetalleHobby(
             "Ilustración Digital",
-            "Creación de conceptos visuales, diseño de personajes y exploración estética de paletas de colores en entornos digitales."
+            "Diseño de personajes originales y exploración de paletas de colores vibrantes inspiradas en la estética digital y el arte moderno."
           )
         }
       />
 
       <TarjetaHobby
-        titulo="Lectura y Práctica de Idiomas"
-        categoria="Crecimiento Personal"
+        titulo="Práctica y Aprendizaje de Inglés"
+        categoria="Idiomas & Formación"
         nombreIcono="book-outline"
         onPress={() =>
           mostrarDetalleHobby(
-            "Idiomas",
-            "Práctica continua del idioma inglés (nivel B1-B2) enfocado en vocabulario técnico para desarrollo de software."
+            "Inglés Técnico",
+            "Estudio continuo enfocado en el dominio técnico y gramatical para potenciar la lectura de documentación y el desarrollo profesional."
           )
         }
       />

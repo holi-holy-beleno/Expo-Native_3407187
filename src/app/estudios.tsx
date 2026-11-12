@@ -12,27 +12,27 @@ export default function EstudiosScreen() {
         </Text>
       </View>
 
-      {/* 1. Tecnología en ADSO en el SENA (En curso) */}
+      {/* 1. Tecnología en ADSO en el SENA (En curso desde finales de 2025) */}
       <TarjetaEstudio
         titulo="Tecnología en Análisis y Desarrollo de Software (ADSO)"
         institucion="Servicio Nacional de Aprendizaje - SENA"
-        anio="2024 - Presente"
+        anio="Finales de 2025 - Presente"
         enCurso={true}
       />
 
-      {/* 2. Educación Media / Bachiller */}
+      {/* 2. Bachillerato en Friedrich Naumann IED */}
       <TarjetaEstudio
         titulo="Bachiller Académico"
-        institucion="Institución Educativa Distrital / Municipal"
-        anio={2023}
+        institucion="Colegio Friedrich Naumann IED"
+        anio="Hasta 2025"
         enCurso={false}
       />
 
-      {/* 3. Curso / Técnico complementario */}
+      {/* 3. Técnico en Programación de Software (Convenio SENA) */}
       <TarjetaEstudio
-        titulo="Técnico en Programación de Software"
-        institucion="SENA / Centro de Idiomas"
-        anio={2023}
+        titulo="Técnico en Programación de Software (Convenio SENA)"
+        institucion="Friedrich Naumann IED / SENA"
+        anio="Inicios de 2024 - Finales de 2025"
         enCurso={false}
       />
     </ScrollView>

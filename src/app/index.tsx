@@ -1,56 +1,56 @@
 // src/app/index.tsx
 import { Ionicons } from "@expo/vector-icons";
-import { Alert, ScrollView, StyleSheet, Text, View } from "react-native";
+import * as Clipboard from "expo-clipboard";
+import { ScrollView, StyleSheet, Text, View, Alert } from "react-native";
 import MiBoton from "../components/MiBoton";
+import TarjetaEstudio from "../components/TarjetaEstudio";
 
-export default function InicioScreen() {
+export default function HomeScreen() {
+  // Función para copiar texto al portapapeles
+  const copiarAlPortapapeles = async (texto: string, tipo: string) => {
+    await Clipboard.setStringAsync(texto);
+    Alert.alert("¡Copiado!", `${tipo} copiado al portapapeles: ${texto}`, [
+      { text: "OK", style: "default" },
+    ]);
+  };
+
   return (
     <ScrollView style={estilos.contenedor} contentContainerStyle={estilos.contenido}>
-      {/* Sección Perfil / Avatar */}
-      <View style={estilos.avatarContenedor}>
-        <Ionicons name="person-circle" size={100} color="#2563eb" />
+      {/* Sección de Encabezado / Perfil */}
+      <View style={estilos.tarjetaPerfil}>
+        <View style={estilos.avatarContainer}>
+          <Ionicons name="person" size={50} color="#2563eb" />
+        </View>
         <Text style={estilos.nombre}>Juan Camilo Beleño Yate</Text>
-        <Text style={estilos.profesion}>Tecnólogo en ADSO</Text>
-      </View>
-
-      {/* Perfil Profesional */}
-      <View style={estilos.seccion}>
-        <Text style={estilos.subtitulo}>Perfil Profesional</Text>
-        <Text style={estilos.parrafo}>
-          Aprendiz del SENA apasionado por el desarrollo de aplicaciones móviles y web. Con habilidades en React Native, JavaScript, TypeScript, HTML5, CSS3, Python y gestión de bases de datos relacionales y no relacionales.
+        <Text style={estilos.rol}>Aprendiz ADSO • Desarrollador de Software</Text>
+        <Text style={estilos.bio}>
+          Apasionado por la tecnología, el desarrollo web y móvil con React Native, y la creación de soluciones eficientes.
         </Text>
       </View>
 
-      {/* Sección de Contacto e Interactividad */}
+      {/* Sección de Contacto con Copiado Rápido */}
       <View style={estilos.seccion}>
-        <Text style={estilos.subtitulo}>Contacto y Enlaces</Text>
+        <Text style={estilos.tituloSeccion}>Contacto e Información</Text>
+        <Text style={estilos.subtituloSeccion}>
+          Toca cualquier botón para copiar la información directamente.
+        </Text>
 
         <MiBoton
-          textoBoton="Enviar Correo"
-          nombreIcono="mail"
-          colorBoton="#E8D464"
-          onPress={() => Alert.alert("Contacto", "Correo: juancamilo.beleno@misena.edu.co")}
+          titulo="Copiar Correo Electrónico"
+          icono="mail-outline"
+          onPress={() => copiarAlPortapapeles("senabeleno.hola@gmail.com", "Correo electrónico")}
         />
 
         <MiBoton
-          textoBoton="Llamar"
-          nombreIcono="call"
-          colorBoton="#3b82f6"
-          onPress={() => Alert.alert("Teléfono", "Número de Contacto: +57 300 123 4567")}
+          titulo="Copiar Número de Teléfono"
+          icono="call-outline"
+          onPress={() => copiarAlPortapapeles("+57 314 2476162", "Teléfono")}
         />
 
         <MiBoton
-          textoBoton="Ver Perfil LinkedIn"
-          nombreIcono="logo-linkedin"
-          colorBoton="#0284c7"
-          onPress={() => Alert.alert("LinkedIn", "https://linkedin.com/in/juan-camilo-beleno")}
-        />
-
-        <MiBoton
-          textoBoton="Repositorio GitHub"
-          nombreIcono="logo-github"
-          colorBoton="#334155"
-          onPress={() => Alert.alert("GitHub", "https://github.com/holi-holy-beleno/proyecto-expo")}
+          titulo="Copiar enlace de GitHub"
+          icono="logo-github"
+          onPress={() => copiarAlPortapapeles("https://github.com/holi-holy-beleno/Expo-Native_3407187", "Enlace de GitHub")}
         />
       </View>
     </ScrollView>
@@ -65,38 +65,61 @@ const estilos = StyleSheet.create({
   contenido: {
     padding: 20,
   },
-  avatarContenedor: {
-    alignItems: "center",
-    marginBottom: 20,
-  },
-  nombre: {
-    fontSize: 24,
-    fontWeight: "bold",
-    color: "#0f172a",
-    marginTop: 8,
-  },
-  profesion: {
-    fontSize: 16,
-    color: "#2563eb",
-    fontWeight: "600",
-  },
-  seccion: {
+  tarjetaPerfil: {
     backgroundColor: "#ffffff",
-    padding: 16,
-    borderRadius: 12,
-    marginBottom: 16,
+    borderRadius: 16,
+    padding: 24,
+    alignItems: "center",
+    marginBottom: 24,
     borderWidth: 1,
     borderColor: "#e2e8f0",
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    elevation: 2,
   },
-  subtitulo: {
-    fontSize: 16,
+  avatarContainer: {
+    width: 80,
+    height: 80,
+    borderRadius: 40,
+    backgroundColor: "#eff6ff",
+    justifyContent: "center",
+    alignItems: "center",
+    marginBottom: 16,
+  },
+  nombre: {
+    fontSize: 22,
     fontWeight: "bold",
-    color: "#1e293b",
-    marginBottom: 12,
+    color: "#0f172a",
+    marginBottom: 4,
+    textAlign: "center",
   },
-  parrafo: {
+  rol: {
     fontSize: 14,
-    color: "#475569",
+    fontWeight: "600",
+    color: "#2563eb",
+    marginBottom: 12,
+    textAlign: "center",
+  },
+  bio: {
+    fontSize: 14,
+    color: "#64748b",
+    textAlign: "center",
     lineHeight: 20,
+  },
+  seccion: {
+    marginBottom: 20,
+  },
+  tituloSeccion: {
+    fontSize: 18,
+    fontWeight: "bold",
+    color: "#0f172a",
+    marginBottom: 4,
+  },
+  subtituloSeccion: {
+    fontSize: 13,
+    color: "#64748b",
+    marginBottom: 12,
   },
 });

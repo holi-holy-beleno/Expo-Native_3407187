@@ -1,52 +1,45 @@
 // src/components/MiBoton.tsx
 import { Ionicons } from "@expo/vector-icons";
+import React from "react";
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
 
-type Props = {
-  textoBoton: string;
-  nombreIcono: keyof typeof Ionicons.glyphMap;
-  colorBoton: string;
+interface MiBotonProps {
+  titulo: string;
+  icono: keyof typeof Ionicons.glyphMap;
   onPress: () => void;
-};
+}
 
-const MiBoton = ({ textoBoton, nombreIcono, colorBoton, onPress }: Props) => {
+export default function MiBoton({ titulo, icono, onPress }: MiBotonProps) {
   return (
-    <TouchableOpacity 
-      style={[estilos.boton, { backgroundColor: colorBoton }]} 
-      onPress={onPress}
-      activeOpacity={0.8}
-    >
-      <Ionicons name={nombreIcono} size={20} color="#0f172a" style={estiloIcono(colorBoton)} />
-      <Text style={estilos.texto}>{textoBoton}</Text>
+    <TouchableOpacity style={estilos.boton} onPress={onPress} activeOpacity={0.8}>
+      <Ionicons name={icono} size={20} color="#ffffff" style={estilos.icono} />
+      <Text style={estilos.textoBoton}>{titulo}</Text>
     </TouchableOpacity>
   );
-};
-
-// Función auxiliar para adaptar el color del icono si el fondo es muy claro u oscuro
-const estiloIcono = (fondo: string) => {
-  return { marginRight: 8 };
-};
-
-export default MiBoton;
+}
 
 const estilos = StyleSheet.create({
   boton: {
     flexDirection: "row",
+    backgroundColor: "#2563eb",
+    paddingVertical: 14,
+    paddingHorizontal: 16,
+    borderRadius: 12,
     alignItems: "center",
     justifyContent: "center",
-    paddingVertical: 12,
-    paddingHorizontal: 16,
-    borderRadius: 10,
-    marginVertical: 6,
+    marginBottom: 12,
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.2,
-    shadowRadius: 1.41,
+    shadowOpacity: 0.15,
+    shadowRadius: 2,
     elevation: 2,
   },
-  texto: {
-    fontSize: 15,
+  icono: {
+    marginRight: 8,
+  },
+  textoBoton: {
+    color: "#ffffff",
+    fontSize: 16,
     fontWeight: "600",
-    color: "#0f172a",
   },
 });
